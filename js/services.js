@@ -9,7 +9,7 @@ angular.module('starter.services', [])
 	// The request is async it's necessary to be called as geo.getCoordinates().then({ ... })
 	fn.getCoordinates = function(location) {
 		console.log($http);
-		var promise = $http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+window.encodeURIComponent(location)+'&location_type=APPROXIMATE&key=AIzaSyC3ViO8Cb9uPsXMgrIQ8Cg5MTqgndVD3wk').then(function (response) {
+		var promise = $http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+window.encodeURIComponent(location)+'&location_type=APPROXIMATE&key=GOOGLEAPIKEY').then(function (response) {
 			var tmp_final_address_components = {};
 			// Searching for the result without details (we don't need street or number)
 			angular.forEach(response.data.results, function(d) {
@@ -35,14 +35,14 @@ angular.module('starter.services', [])
 	// @ coordinates as { lat : 0, lng : 0}
 	
 	fn.getWeather = function(coordinates) {
-		var promise = $http.get('http://api.openweathermap.org/data/2.5/weather?lat='+window.encodeURIComponent(coordinates.lat)+'&lon='+window.encodeURIComponent(coordinates.lng)+'&appid=bd82977b86bf27fb59a04b61b657fb6f').then(function (response) {
+		var promise = $http.get('http://api.openweathermap.org/data/2.5/weather?lat='+window.encodeURIComponent(coordinates.lat)+'&lon='+window.encodeURIComponent(coordinates.lng)+'&appid=OPENWEATHERAPIKEY').then(function (response) {
 	        return response.data;
 	    });
 		return promise;
 	};
 	
 	fn.getWeatherNextDays = function(coordinates) {
-		var promise = $http.get('http://api.openweathermap.org/data/2.5/forecast?lat='+window.encodeURIComponent(coordinates.lat)+'&lon='+window.encodeURIComponent(coordinates.lng)+'&appid=bd82977b86bf27fb59a04b61b657fb6f').then(function (response) {
+		var promise = $http.get('http://api.openweathermap.org/data/2.5/forecast?lat='+window.encodeURIComponent(coordinates.lat)+'&lon='+window.encodeURIComponent(coordinates.lng)+'&appid=OPENWEATHERAPIKEY').then(function (response) {
 	        return response.data;
 	    });
 		return promise;
