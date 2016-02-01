@@ -1,0 +1,10 @@
+/* Empty. Add your own CSS if you like */
+.align-center { text-align:center; }
+.icon-weather { font-size:70px; }
+.icon-wind { font-size:30px; }
+.bg-photo { background-size:cover; background-position:50% 50%; -webkit-transition: opacity 0.5s ease-in-out; -moz-transition: opacity 0.5s ease-in-out; transition: opacity 0.5s ease-in-out; }
+.photo-visible { opacity:1; }
+.photo-hidden { opacity:0; }
+.card { background-color: rgba(255,255,255,.85); }
+.icon-medium-weather { font-size:40px; }
+.nextdays .col { min-width:150px; }

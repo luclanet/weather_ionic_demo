@@ -1,0 +1,40 @@
+<ion-view view-title="{{currentLocation ? 'Weather in ' + currentLocation : ''}}">
+  <ion-content ng-style="{'background-image':'url('+photo+')' }" class="bg-photo" ng-class="{'photo-visible' : photo, 'photo-hidden' : photoHidden == true}">
+  </ion-content>
+  <ion-content>
+	<ion-refresher pulling-text="Pull to refresh..." on-refresh="getPageData()"></ion-refresher>
+  	<!-- Waiting for the http requests -->
+  	<div ng-if="!currentCoordinates || !currentWeather" class="align-center padding">
+ 	  <ion-spinner></ion-spinner>
+  	</div>
+  	<div ng-if="currentCoordinates && currentWeather">
+  		<div class="card">
+	  		<div class="row">
+	  			<div class="col"><i class="wi wi-owm-{{dayNight}}-{{currentWeather.weather[0].id}} icon-weather positive"></i></div>
+	  			<div class="col col-75">
+	  				<h1 class="positive">{{currentLocation}}</h1>
+	  				<h4><i class="wi wi-wind towards-{{currentWeather.wind.deg}}-deg positive icon-wind"></i>&nbsp;&nbsp; {{currentWeather.weather[0].main}}</h4>
+				</div>
+	  		</div>
+  		</div>
+  		<div class="card nextdays">
+  			<div class="padding align-center" ng-if="!currentWeatherNextDays.list">
+  				<ion-spinner></ion-spinner>
+  			</div>
+	    	<ion-scroll direction="x">
+		    	<div class="row" ng-if="currentWeatherNextDays.list">
+		    		<div class="col align-center" ng-repeat="w in currentWeatherNextDays.list">
+		    			<i class="wi wi-owm-{{w.weather[0].id}} icon-medium-weather positive"></i>
+		    			<div>
+		    				<h6>{{w.dt | unixTime : 'j M'}}</h6>
+		    				<h3 class="positive"><i class="wi wi-time-{{w.dt | unixTime : 'g'}} icon-medium-weather positive"></i> {{w.dt | unixTime : 'H A'}}</h3>
+		    			</div>
+		    		</div>
+		    	</div>
+	    	</ion-scroll>
+	    </div>
+  	</div>
+  
+    
+  </ion-content>
+</ion-view>
