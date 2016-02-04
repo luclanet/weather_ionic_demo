@@ -11,6 +11,7 @@ ionic start test https://github.com/luclanet/weather_ionic_demo
 3. Request for google maps geocode api key at https://console.developers.google.com/ and correct in file www/js/services.js
 
 4. Add geo location plugin
+  
    ionic plugin add cordova-plugin-geolocation
 
 5. Build/test/do whatever you want!
